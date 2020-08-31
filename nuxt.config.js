@@ -24,12 +24,19 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css',
+      },
+    ],
   },
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~assets/css/index.scss'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
