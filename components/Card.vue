@@ -8,16 +8,23 @@
         <h1 class="card-title">{{ card.title }}</h1>
       </router-link>
 
-      <div class="d-flex justify-content-between align-items-center">
-        <small class="text-muted">1 mins</small>
+      <div class="card-info">
+        <span class="text-muted">{{ card.updated_at | parseTime }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import utils from '../utils'
+
 export default {
   name: 'Card',
+  filters: {
+    parseTime(str, cFormat = '{y}-{m}-{d} {h}:{i}') {
+      return utils.parseTime(new Date(str), cFormat)
+    },
+  },
   props: {
     card: {
       type: Object,
