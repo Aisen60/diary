@@ -13,6 +13,7 @@
     "lint": "npm run lint:js"
   },
   "dependencies": {
+    "marked": "^1.1.1",
     "nuxt": "^2.14.0"
   },
   "devDependencies": {
