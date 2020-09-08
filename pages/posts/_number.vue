@@ -48,7 +48,7 @@ export default {
 
   head() {
     return {
-      title: `${this.postData.title}-${GIT_USERNAME}`,
+      title: `${this.postData.title} - ${GIT_USERNAME}'s blog`,
       meta: [
         {
           hid: 'description',
