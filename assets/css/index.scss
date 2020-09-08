@@ -5,28 +5,6 @@
   margin: 0;
 }
 
-@font-face {
-  font-family: 'iconfont';
-  src: url('../fonts/iconfont.eot?t=1598884693415'); /* IE9 */
-  src: url('../fonts/iconfont.eot?t=1598884693415#iefix')
-      format('embedded-opentype'),
-    /* IE6-IE8 */
-      url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAQMAAsAAAAACDwAAAPAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqEHINKATYCJAMMCwgABCAFhG0HPRsXB8gOpRDBwNhgIAFCPNTv9zt7d79hMp2mXSvTiSQiiUSjfSLJU6BkhuxdLOR31KYNUQoVg7ROVSWyEIWWyLn91P3lf5f/uZzeXW0MaH7Lclmbxt581AswDijQMSdIwAUSkAfSol4zsdCsi6sJYEKQeNh+ZX074GRwpwDixMCpAa/oyAaKAw6j6BhZsCuQw9uF5DaAS/X5+IXUwEEjT7jnwXGFDoo/NB8Tc+r/sX6BgGQ7C5xxIIFNoEAcddoOSbPYJikiUsuGs/tkMJKtgl2HEsdaxUV/eBIQfbhwCmAV4g18aBiPAB8TdRoQUtuHxD3wBKSlV+jB5nDXwTI/wfXw6QDZmjMZbsfOBcvXntVpVUtANvYeXEAt9tZ1YrRmKb2M7JdPU1FqXcFWvwUqroNaQk6bhmXlqi5ELiYmTH2Mb9F+Ry9VYavWRm67dituV/A6bNrB2FUb/baGbw4Pvzq/fCm9NTLeZfl63+37A1cHronZceNKxPaAxZuJ+ZFb/VZGLqV1mffiJUsoaskO5llx4gi5cgZMXVpMP8WMrvNn9AVP2mVJzK/cb2OAPbqrP0zlhnyG7FEuJ+R73UoOmVs31IwxEd9Dk295JSWBPPn++/v/Hb6vKA8KGm5JCZECyJWUntqICOy4G+TH1OrYWW2i0FJKXVzqcJqg+uX2cG9DVt36kwmhk7g9Abdm9p5Y18+L/Kwfk1aYNt0O2KOfhJEPG2qz69e9WRZ25bE7HV94eKH/jc+k02lJNpuW8r1O6Ee5cyj3jxfaJxxLL5YuC62tYtwsqNwLHM1DRRjljQY6qEAK8v55KHAUhgG623leYlaJR3lBWvJ3vwNb19nSIbf8rzhZAO/WzQ7wdLcLpjnA8N7tAf6lZGJFxTKszwrFTJwmE0/+poQgdDX+YCkseLFcuzy5kICjCmiUAiHhwtEixUMPKR36cEUwIU7V+EleRFJYjYB1sxBg3O0DCVfnQMrdHVRGeg5ytLeg4B5SIHSG14ykyDAQZSJS25CO0YxjDFqBZ6nRRujiVsTZzWqxLFPMTiRaDUEmJTG5nqxCPBK36GN1cKk2G8uwomBhKtF6yGwWmBFRMCKtLVFvs43kJiWxXU9K1AoWIJQRIWo2iA5DYxyGgZaAx4raNkTj/a0Qjp2ZmjiAG/F3QkRWhsYZKRIlT0Cr1Pwk3KucY+XASWVjw2KwRAILRiWyIGYSEzBGupsZIVo2ifQLIiNyJRnV2KnqxOO1ludbBxPwQRktMgp+JtjHGtQ8h+vtao2az84GAA==')
-      format('woff2'),
-    url('../fonts/iconfont.woff?t=1598884693415') format('woff'),
-    url('../fonts/iconfont.ttf?t=1598884693415') format('truetype'),
-    /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-      url('../fonts/iconfont.svg?t=1598884693415#iconfont') format('svg'); /* iOS 4.1- */
-}
-
-.icon-huaban88:before {
-  content: '\e67c';
-}
-
-.icon-youxiang:before {
-  content: '\e662';
-}
-
 .body {
   margin: 0;
   font-size: 14px;
@@ -35,43 +13,11 @@
     'WenQuanYi Micro Hei', sans-serif;
 }
 
-.footer {
-  max-width: 576px;
-  margin: 90px auto 0px;
-  border-top: 1px solid rgb(238, 238, 238);
-  padding: 30px 0px;
-
-  .footer-social {
-    text-align: center;
-    margin-bottom: 20px;
-
-    a {
-      text-decoration: none;
-      color: rgb(51, 51, 61);
-      &:hover {
-        color: #337ab7;
-      }
-    }
-
-    .footer-social-item {
-      font-size: 24px;
-      margin: 0 5px;
-    }
-  }
-}
-
-.iconfont {
-  font-family: 'iconfont' !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 .main-wrapper {
   .main-banner {
-    height: 400px;
-    background-image: url('~assets/img/bg.jpg');
+    height: 500px;
+    // background-image: url('~assets/img/promise.jpg');
+    background-image: url('https://gitee.com/aisen60/blog/raw/master/assets/banner.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     display: flex;
@@ -84,9 +30,10 @@
       padding: 0 10px;
     }
   }
+
   .main-card-line {
     padding: 30px 10px;
-    background-color: #f8f9fa !important;
+    background-color: #f8f9fa;
     .card-post {
       display: flex;
       flex-wrap: wrap;
@@ -135,6 +82,9 @@
 }
 
 .main-post-wrapper {
+  background: #f8f9fa;
+  overflow: hidden;
+
   .article {
     max-width: 700px;
     margin: 0 auto;
@@ -174,6 +124,96 @@
     .article-main {
       padding: 10px 20px;
       background-color: #fff;
+      section {
+        word-break: break-word;
+      }
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .footer-wrapper {
+    max-width: 700px;
+    height: 40px;
+    margin: 0 auto;
+    color: #1b2b4f;
+    display: flex;
+    justify-content: space-between;
+    line-height: 40px;
+    font-size: 16px;
+    p {
+      padding: 0;
+    }
+  }
+}
+
+.back-top {
+  right: 20px;
+  bottom: 50px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  line-height: 45px;
+  background: rgb(231, 234, 241);
+  position: fixed;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.github-corner {
+  position: absolute;
+  top: 0;
+  border: 0;
+  right: 0;
+}
+
+@media (max-width: 479px) {
+  .main-wrapper {
+    .main-banner {
+      height: 230px;
+    }
+    .main-card-line {
+      padding-left: 0;
+      padding-right: 0;
+      .container {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+  .main-post-wrapper {
+    .article {
+      margin: 0;
+    }
+  }
+
+  .footer {
+    .footer-wrapper {
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .main-wrapper {
+    .main-banner {
+      height: 300px;
+    }
+  }
+  .main-post-wrapper {
+    .article {
+      margin: 0;
+    }
+  }
+  .footer {
+    .footer-wrapper {
+      display: block;
+      text-align: center;
     }
   }
 }
