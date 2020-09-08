@@ -5,26 +5,26 @@
       <div class="container">
         <div class="row card-post">
           <div
-            v-for="card in cardData"
-            :key="card.id"
+            v-for="post in postsData"
+            :key="post.id"
             class="col-lg-4 col-md-6 col-sm-6"
           >
-            <Card :card="card" />
+            <Card :card="post" />
           </div>
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
-import { cardData } from '../config'
+import Api from '../services/index'
 export default {
   name: 'Home',
-  data() {
+  async asyncData({ app, store }) {
+    const { data: postsData } = await Api.getIssues()
     return {
-      cardData,
+      postsData,
     }
   },
 }
