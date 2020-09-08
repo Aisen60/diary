@@ -38,8 +38,8 @@ export default {
       type: Object,
       default() {
         return {
-          right: '50px',
-          bottom: '50px',
+          right: '20px',
+          bottom: '20px',
           width: '40px',
           height: '40px',
           'border-radius': '4px',
@@ -97,31 +97,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.back-to-ceiling {
-  position: fixed;
-  display: inline-block;
-  text-align: center;
-  cursor: pointer;
-}
-
-.back-to-ceiling:hover {
-  background: #d5dbe7;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.back-to-ceiling .Icon {
-  fill: #9aaabf;
-  background: none;
-}
-</style>
