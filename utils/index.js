@@ -1,3 +1,4 @@
+import { GIT_BASE_URL, GIT_USERNAME, GIT_REPOSITORY } from '../config'
 /**
  * Parse the time to string
  * @param {(Object|string|number)} time
@@ -41,6 +42,10 @@ export function parseTime(time, cFormat) {
   return timeStr
 }
 
-export default {
-  parseTime,
+/**
+ * 拼接文件路径
+ * @param {string} fileName 文件名
+ */
+export const splicingFileUrl = (fileName) => {
+  return `${GIT_BASE_URL}/${GIT_USERNAME}/${GIT_REPOSITORY}/raw/master/assets/${fileName}`
 }
