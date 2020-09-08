@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "diary",
+            "script": "npm",
+            "args": "start"
+        }
+    ]
+}
