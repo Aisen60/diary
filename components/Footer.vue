@@ -1,12 +1,19 @@
 <template>
-  <div class="footer">
-    <div class="footer-social">
-      <a href="https://github.com/Aisen60" target="_blank">
-        <i class="iconfont footer-social-item icon-huaban88"></i>
-      </a>
-      <a href="mailto:caixusheng60@gmail.com" target="_blank">
-        <i class="iconfont footer-social-item icon-youxiang"></i>
-      </a>
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <p>{{ copyright }}</p>
+      <p>{{ webLicense }}</p>
     </div>
-  </div>
+  </footer>
 </template>
+<script>
+import { GIT_USERNAME, WEB_LICENSE } from '../config'
+export default {
+  data() {
+    return {
+      copyright: `Copyright © 2019 ${GIT_USERNAME}. All Rights Reserved`,
+      webLicense: `ICP备案网站信息: ${WEB_LICENSE}`,
+    }
+  },
+}
+</script>

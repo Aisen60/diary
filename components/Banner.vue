@@ -1,8 +1,9 @@
 <template>
   <div class="main-banner">
     <h1>
-      {{ config.bio }}
+      {{ config.BIO }}
     </h1>
+    <Github />
   </div>
 </template>
 <script>

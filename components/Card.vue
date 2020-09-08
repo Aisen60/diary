@@ -1,12 +1,12 @@
 <template>
   <div class="card">
-    <router-link :to="{ path: '/posts/' + card.number }" class="card-image">
-      <img src="~assets/img/bg.jpg" alt="" />
-    </router-link>
+    <nuxt-link :to="{ path: '/posts/' + card.number }" class="card-image">
+      <img :src="splicingFileUrl(card.number + '.jpg')" alt="" />
+    </nuxt-link>
     <div class="card-body">
-      <router-link :to="{ path: '/posts/' + card.number }" class="card-link">
+      <nuxt-link :to="{ path: '/posts/' + card.number }" class="card-link">
         <h1 class="card-title">{{ card.title }}</h1>
-      </router-link>
+      </nuxt-link>
 
       <div class="card-info">
         <span class="text-muted">{{ card.updated_at | parseTime }}</span>
@@ -16,15 +16,9 @@
 </template>
 
 <script>
-import utils from '../utils'
-
 export default {
   name: 'Card',
-  filters: {
-    parseTime(str, cFormat = '{y}-{m}-{d} {h}:{i}') {
-      return utils.parseTime(new Date(str), cFormat)
-    },
-  },
+
   props: {
     card: {
       type: Object,
