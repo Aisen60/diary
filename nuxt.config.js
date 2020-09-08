@@ -1,8 +1,5 @@
+import { GIT_USERNAME } from './config'
 export default {
-  server: {
-    port: 8000, // default: 3000
-    host: '0.0.0.0', // default: localhost
-  },
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
@@ -18,14 +15,32 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: GIT_USERNAME,
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+      { 'http-equiv': 'X-UA-Compatible', content: 'ie=edge' },
+      {
+        name: 'viewport',
+        content:
+          'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+      },
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      {
+        name: 'apple-mobile-web-app-status-bar-style',
+        content: 'black-translucent',
+      },
+      {
+        name: 'keywords',
+        content: 'aisen60, aisen60-blog',
+      },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content: 'aisen60的博客，分享技术，记录生活。',
+      },
+      {
+        name: 'author',
+        content: 'aisen60',
       },
     ],
     link: [
@@ -45,7 +60,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: ['~/plugins/main'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
