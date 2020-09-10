@@ -1,13 +1,13 @@
-name: Deploy Project
+name: Publish And Deploy # CI/CD的名称
 on:
   push:
-    tags:
+    tags: # 主要是捕获到标签tags的推送，并且是以v开头的，就开始执行下面的任务
       - 'v*'
 
-jobs:
+jobs: # 工作流
   build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
+    steps: # 步骤
       # 下载源码
       - name: Checkout
         uses: actions/checkout@master
@@ -17,14 +17,14 @@ jobs:
         uses: actions/setup-node@master
       - run: npm install
       - run: npm run build
-      - run: tar -zcvf release.tgz .nuxt static nuxt.config.js package.json package-lock.json pm2.config.json
+      - run: tar -zcvf release.tgz .nuxt static utils config.js nuxt.config.js package.json package-lock.json pm2.config.json
 
       # 发布 Release
       - name: Create Release
         id: create_release
         uses: actions/create-release@master
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }} # github token
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
@@ -47,10 +47,18 @@ jobs:
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
+          host: ${{ secrets.HOST }} # 服务器ip
+          username: ${{ secrets.USERNAME }} # 服务器用户名
+          password: ${{ secrets.PASSWORD }} # 服务器密码
+          port: ${{ secrets.PORT }} # 服务器端口
+          # 下面的 script 就是在服务器上运行的脚本
+          # 1、首先先进入到一个你指定的文件夹下
+          # cd /xxx/xxx
+          # 2、下载github指定仓库里面最新的release包到当前文件夹
+          # wget https://github.com/:username/:repos/releases/latest/download/release.tgz -O release.tgz
+          # 3、解压
+          # 4、安装依赖
+          # 5、启动服务
           script: |
             cd /webapp/diary
             wget https://github.com/Aisen60/diary/releases/latest/download/release.tgz -O release.tgz
