@@ -24,7 +24,7 @@ jobs: # 工作流
         uses: actions/setup-node@master
       - run: npm install
       - run: npm run build
-      - run: tar -zcvf release.tgz .nuxt static utils config.js nuxt.config.js package.json package-lock.json pm2.config.json
+      #- run: tar -zcvf release.tgz .nuxt static utils config.js nuxt.config.js package.json package-lock.json pm2.config.json
       - run: ls -a
 
       # 使用 sebastianpopp/ftp-action@releases/v2 插件，把 release.tgz 推送到远程服务器
@@ -35,6 +35,6 @@ jobs: # 工作流
           FTP_SERVER: caixusheng.com
           FTP_USERNAME: ${{ secrets.USERNAME }}
           FTP_PASSWORD: ${{ secrets.PASSWORD }}
-          LOCAL_DIR: release.tgz
+          LOCAL_DIR: .nuxt static utils config.js nuxt.config.js package.json package-lock.json pm2.config.json
           REMOTE_DIR: /webapp/test
           ARGS: --delete
