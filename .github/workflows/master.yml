@@ -1,0 +1,37 @@
+name: Branch Deploy
+on:
+  push:
+    branch:
+      - 'master'
+    paths-ignore: # 下列文件的变更不触发部署
+      - .editorconfig
+      - .eslintrc
+      - .gitignore
+      - .prettierrc
+      - README.md
+      - LICENSE
+
+jobs: # 工作流
+  branch-deploy: # 工作流名称
+    runs-on: ubuntu-latest # 使用ubuntu系统镜像运行自动化
+    steps: # 步骤
+      # 下载源码
+      - name: Checkout
+        uses: actions/checkout@master
+
+      # 打包构建
+      - name: Build
+        uses: actions/setup-node@master
+      - run: npm install
+      - run: npm run build
+      - run: tar -zcvf release.tgz .nuxt static utils config.js nuxt.config.js package.json package-lock.json pm2.config.json
+
+      # 使用 sebastianpopp/ftp-action@releases/v2 插件，把 release.tgz 推送到远程服务器
+      - name: FTP Deploy
+        uses: sebastianpopp/ftp-action@releases/v2
+        with:
+          host: ftp://47.107.51.204
+          user: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          localDir: ./release.tgz
+          remoteDir: /webapp/test
