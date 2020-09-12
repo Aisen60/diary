@@ -36,7 +36,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'aisen60的博客，分享技术，记录生活。。。',
+        content: 'aisen60的博客，分享技术，记录生活',
       },
       {
         name: 'author',
