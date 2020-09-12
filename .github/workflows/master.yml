@@ -36,12 +36,12 @@ jobs: # 工作流
 
         # 部署
         - name: Deploy
-            uses: garygrossgarten/github-action-scp@release
-            with:
-                local: release.tgz
-                remote: /webapp/test
-                # 涉及偏安全隐私的信息，不要明文暴露在此文件中，因为repo很可能是公开的，会被所有人看见
-                # ${{ ... }} 会应用你在对应项目设置中，配置的对应serets的键值信息，从而保护私密信息不被看到
-                host: ${{ secrets.HOST }}
-                username: ${{ secrets.USERNAME }} 
-                password: ${{ secrets.PASSWORD }}
+          uses: garygrossgarten/github-action-scp@release
+          with:
+            local: release.tgz
+            remote: /webapp/test
+            # 涉及偏安全隐私的信息，不要明文暴露在此文件中，因为repo很可能是公开的，会被所有人看见
+            # ${{ ... }} 会应用你在对应项目设置中，配置的对应serets的键值信息，从而保护私密信息不被看到
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }} 
+            password: ${{ secrets.PASSWORD }}
