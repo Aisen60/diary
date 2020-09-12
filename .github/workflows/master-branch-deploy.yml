@@ -18,15 +18,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Install
-        run: yarn install
-
-      - name: Build
-        run: npm run build
-
-      - name: Release
-        run: tar -zcvf release.tgz .nuxt static utils config.js nuxt.config.js package.json yarn.lock pm2.config.json
-
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -39,6 +30,15 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
+      - name: Install
+        run: yarn install
+
+      - name: Build
+        run: npm run build
+
+      - name: Release
+        run: tar -zcvf release.tgz .nuxt static utils config.js nuxt.config.js package.json yarn.lock pm2.config.json
 
       - name: Copy file via ssh password
         uses: appleboy/scp-action@master
