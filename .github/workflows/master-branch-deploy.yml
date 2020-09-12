@@ -47,4 +47,4 @@ jobs:
           target: /webapp/test
           script: |
             cd /webapp/test
-            rm -fr !(release.tgz)
+            rm -rf !(release.tgz)
