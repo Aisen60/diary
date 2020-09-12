@@ -6,7 +6,7 @@ on:
     paths-ignore: # 下列文件的变更不触发部署
       - .editorconfig
       - .eslintrc
-      - .gitignore
+      - .gitignore  
       - .prettierrc
       - README.md
       - LICENSE
@@ -29,21 +29,19 @@ jobs: # 工作流
 
         - name: ls -a
           run: ls -a
+        
+        # 为了将资源部署到云服务器，此处下载一个ssh传资料的工具
+        - name: Setup sshpass
+          run: sudo apt-get install sshpass
 
-        - name: FTP Deployer
-          uses: sand4rt/ftp-deployer@v0.9
-          with:
-            # FTP host URL like: ftp.host.com
+        # 部署
+        - name: Deploy
+        uses: garygrossgarten/github-action-scp@release
+        with:
+            local: release.tgz
+            remote: /webapp/test
+            # 涉及偏安全隐私的信息，不要明文暴露在此文件中，因为repo很可能是公开的，会被所有人看见
+            # ${{ ... }} 会应用你在对应项目设置中，配置的对应serets的键值信息，从而保护私密信息不被看到
             host: ${{ secrets.HOST }}
-            # FTP port default is: 21
-            port: ${{ secrets.PORT }}  # optional
-            # Ftp username
-            username: ${{ secrets.USERNAME }}
-            # Ftp password
+            username: ${{ secrets.USERNAME }} 
             password: ${{ secrets.PASSWORD }}
-            # The remote folder location of your FTP server
-            remote_folder: /webapp/test # optional
-            # The local folder location
-            local_folder: release.tgz # optional, default is dist
-            # Remove existing files inside FTP remote folder
-            cleanup: true # optional
