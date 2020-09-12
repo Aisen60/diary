@@ -18,9 +18,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
+      - name: Install
+        run: yarn
+
       - name: Build
-        uses: actions/setup-node@master
-
-      - run: yarn install
-
-      - run: yarn build
+        run: yarn build
