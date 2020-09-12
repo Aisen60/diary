@@ -21,4 +21,6 @@ jobs:
       - run: node -v
       - run: npm -v
       - run: yarn -v
+      - run: npm config get registry
+      - run: yarn config get registry
 
