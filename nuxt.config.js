@@ -1,4 +1,4 @@
-import { GIT_USERNAME } from './config'
+import { WEB_TITLE } from './config'
 export default {
   /*
    ** Nuxt rendering mode
@@ -15,7 +15,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    title: `${GIT_USERNAME}'s blog`,
+    title: `${WEB_TITLE}'s blog`,
     meta: [
       { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
       { 'http-equiv': 'X-UA-Compatible', content: 'ie=edge' },

@@ -25,7 +25,7 @@
 
 <script>
 import marked from 'marked'
-import { GIT_USERNAME } from '../../config'
+import { WEB_TITLE } from '../../config'
 import Api from '../../services'
 
 export default {
@@ -48,7 +48,7 @@ export default {
 
   head() {
     return {
-      title: `${this.postData.title} - ${GIT_USERNAME}'s blog`,
+      title: `${this.postData.title} - ${WEB_TITLE}`,
       meta: [
         {
           hid: 'description',
