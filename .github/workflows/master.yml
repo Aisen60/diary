@@ -14,27 +14,44 @@ on:
 jobs: # 工作流
   branch-deploy: # 工作流名称
     runs-on: ubuntu-latest # 使用ubuntu系统镜像运行自动化
-    steps: # 步骤
-      # 下载源码
-      - name: Checkout
-        uses: actions/checkout@master
+    steps:
+        - name: Checkout
+          uses: actions/checkout@master
+        
+        - name: Install Dependencies
+          uses: actions/setup-node@master
+          run: npm install
 
-      # 打包构建
-      - name: Build
-        uses: actions/setup-node@master
-      - run: npm install
-      - run: npm run build
-      #- run: tar -zcvf release.tgz .nuxt static utils config.js nuxt.config.js package.json package-lock.json pm2.config.json
-      - run: ls -a
+        - name: Build
+          run: npm run build
+        
+        - name: Release
+          run: tar -zcvf release.tgz .nuxt static utils config.js nuxt.config.js package.json package-lock.json pm2.config.json
 
-      # 使用 sebastianpopp/ftp-action@releases/v2 插件，把 release.tgz 推送到远程服务器
-      - uses: actions/checkout@master
-      - name: FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@2.0.0
-        env:
-          FTP_SERVER: caixusheng.com
-          FTP_USERNAME: ${{ secrets.USERNAME }}
-          FTP_PASSWORD: ${{ secrets.PASSWORD }}
-          LOCAL_DIR: .nuxt static utils config.js nuxt.config.js package.json package-lock.json pm2.config.json
-          REMOTE_DIR: /webapp/test
-          ARGS: --delete
+        - name: ls -a
+          run: ls -a
+
+        - name: FTP Deployer
+          uses: sand4rt/ftp-deployer@v0.9
+          with:
+            # FTP host URL like: ftp.host.com
+            host: ${{ secrets.HOST }}
+            # FTP port default is: 21
+            port: 21 # optional
+            # Ftp username
+            username: ${{ secrets.USERNAME }}
+            # Ftp password
+            password: ${{ secrets.PASSWORD }}
+            # The remote folder location of your FTP server
+            remote_folder: /webapp/test # optional
+            # The local folder location
+            local_folder: release.tgz # optional, default is dist
+            # Remove existing files inside FTP remote folder
+            cleanup: false # optional
+            include: '' # optional
+            exclude: # optional
+              - node_modules/**
+              - node_modules/**/.*
+              - .git/**
+              - *.env
+            pasive: true # optional
