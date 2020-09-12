@@ -1,8 +1,6 @@
 name: Version Deploy # CI/CD的名称
 on:
   push:
-    branches-ignore:
-      - 'master'
     tags: # 主要是捕获到标签tags的推送，并且是以v开头的，就开始执行下面的任务
       - 'v*'
 
