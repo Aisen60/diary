@@ -9,7 +9,6 @@ Object.keys(filters).forEach((key) => {
 
 Vue.use(methods)
 
-// eslint-disable-next-line no-console
 console.log(
   `%c ${WEB_TITLE} %c current version: ${APP_VERSION}`,
   'background: #35495e; padding: 1px; color: #fff',
