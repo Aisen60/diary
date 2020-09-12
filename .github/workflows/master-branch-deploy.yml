@@ -18,15 +18,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Cache multiple paths
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/cache
-            !~/cache/exclude
-            **/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
-
       - name: Install
         run: npm install
 
@@ -35,6 +26,15 @@ jobs:
 
       - name: Release
         run: tar -zcvf release.tgz .nuxt static utils config.js nuxt.config.js package.json package-lock.json pm2.config.json
+
+      - name: Cache multiple paths
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/cache
+            !~/cache/exclude
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       - name: Copy file via ssh password
         uses: appleboy/scp-action@master
@@ -46,14 +46,13 @@ jobs:
           source: 'release.tgz'
           target: '/webapp/diary'
 
-      # 部署到服务器
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }} # 服务器ip
-          port: ${{ secrets.PORT }} # 服务器端口
-          username: ${{ secrets.USERNAME }} # 服务器用户名
-          password: ${{ secrets.PASSWORD }} # 服务器密码
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
           script: |
             cd /webapp/diary
             tar zxvf release.tgz
