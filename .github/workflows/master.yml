@@ -47,11 +47,4 @@ jobs: # 工作流
             # The local folder location
             local_folder: release.tgz # optional, default is dist
             # Remove existing files inside FTP remote folder
-            cleanup: false # optional
-            include: '' # optional
-            exclude: # optional
-              - node_modules/**
-              - node_modules/**/.*
-              - .git/**
-              - *.env
-            pasive: true # optional
+            cleanup: true # optional
