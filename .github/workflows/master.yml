@@ -36,7 +36,7 @@ jobs: # 工作流
             # FTP host URL like: ftp.host.com
             host: ${{ secrets.HOST }}
             # FTP port default is: 21
-            port: 21 # optional
+            port: ${{ secrets.PORT }}  # optional
             # Ftp username
             username: ${{ secrets.USERNAME }}
             # Ftp password
