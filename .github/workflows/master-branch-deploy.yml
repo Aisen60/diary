@@ -3,8 +3,6 @@ on:
   push:
     branch:
       - 'master'
-    tags:
-      - '!v*'
     paths-ignore: # 下列文件的变更不触发部署
       - .editorconfig
       - .eslintrc
