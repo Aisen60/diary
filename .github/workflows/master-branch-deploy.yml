@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@master
       
       - name: Echo info
-        run: node -v
-        run: npm -v
-        run: node -v
+      - run: node -v
+      - run: npm -v
+      - run: node -v
 
