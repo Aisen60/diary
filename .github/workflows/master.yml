@@ -18,8 +18,7 @@ jobs: # 工作流
         - name: Checkout
           uses: actions/checkout@master
         
-        - name: Install Dependencies
-          uses: actions/setup-node@master
+        - name: Install
           run: npm install
 
         - name: Build
