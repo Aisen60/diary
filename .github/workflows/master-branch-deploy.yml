@@ -44,7 +44,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: 'release.tgz'
-          target: '/webapp/test'
+          target: '/webapp/diary'
 
       # 部署到服务器
       - name: Deploy
@@ -55,6 +55,7 @@ jobs:
           username: ${{ secrets.USERNAME }} # 服务器用户名
           password: ${{ secrets.PASSWORD }} # 服务器密码
           script: |
-            cd /webapp/test
-            ls |grep -v release.tgz |xargs rm -rf
+            cd /webapp/diary
             tar zxvf release.tgz
+            npm install --production
+            pm2 reload pm2.config.json
