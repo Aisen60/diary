@@ -48,3 +48,29 @@ jobs:
 
       - name: Build
         run: yarn build
+
+      - name: Tar gz
+        run: tar -zcvf app.tgz .nuxt static utils config.js nuxt.config.js package.json yarn.lock pm2.config.json
+
+      - name: Copy file
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          source: 'app.tgz'
+          target: '/webapp/diary'
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd /webapp/diary
+            tar zxvf app.tgz
+            yarn install --production
+            pm2 reload pm2.config.json
