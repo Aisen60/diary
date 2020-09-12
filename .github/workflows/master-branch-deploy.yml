@@ -45,6 +45,3 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           source: 'release.tgz'
           target: '/webapp/test'
-          script: |
-            cd /webapp/test
-            rm -rf !(release.tgz)
