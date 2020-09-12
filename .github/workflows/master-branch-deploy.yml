@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-      
+
       - name: Cache multiple paths
         uses: actions/cache@v2
         with:
@@ -36,12 +36,25 @@ jobs:
       - name: Release
         run: tar -zcvf release.tgz .nuxt static utils config.js nuxt.config.js package.json package-lock.json pm2.config.json
 
+      - name: Copy file via ssh password
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: 'release.tgz'
+          target: '/webapp/test'
+
+      # 部署到服务器
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          port: ${{ secrets.PORT }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          source: 'release.tgz'
-          target: '/webapp/test'
+          host: ${{ secrets.HOST }} # 服务器ip
+          port: ${{ secrets.PORT }} # 服务器端口
+          username: ${{ secrets.USERNAME }} # 服务器用户名
+          password: ${{ secrets.PASSWORD }} # 服务器密码
+          script: |
+            cd /webapp/test
+            ls |grep -v release.tgz |xargs rm -rf
+            tar zxvf release.tgz
