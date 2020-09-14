@@ -1,30 +1,28 @@
 <template>
-  <div class="main-wrapper">
-    <Banner />
-    <div class="main-card-line">
-      <div class="container">
-        <div class="row card-post">
-          <div
-            v-for="post in postsData"
-            :key="post.id"
-            class="col-lg-4 col-md-6 col-sm-6"
-          >
-            <Card :card="post" />
-          </div>
-        </div>
-      </div>
+  <div class="page-index">
+    <div class="page-index-section">
+      <img class="index-avatar" :src="config.AVATARS" />
     </div>
+    <div class="page-index-section">
+      <h1 class="index-full-name">{{ config.FULL_NAME }}</h1>
+    </div>
+    <div class="page-index-section">
+      <div class="index-bio">{{ config.BIO }}</div>
+    </div>
+    <hr class="page-index-division" />
+    <div class="page-index-section">
+      <Nav />
+    </div>
+    <footer class="page-index-footer">{{ config.COPYRIGHT }}</footer>
   </div>
 </template>
 
 <script>
-import Api from '../services/index'
 export default {
-  name: 'Home',
-  async asyncData({ app, store }) {
-    const { data: postsData } = await Api.getIssues()
+  name: 'HomePage',
+  head() {
     return {
-      postsData,
+      title: `${this.config.SIMPLE_NAME} | HomePage`,
     }
   },
 }

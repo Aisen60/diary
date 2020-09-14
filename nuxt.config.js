@@ -1,4 +1,4 @@
-import { WEB_TITLE } from './config'
+import { SIMPLE_NAME } from './config'
 export default {
   /*
    ** Nuxt rendering mode
@@ -15,7 +15,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    title: `${WEB_TITLE}'s blog`,
+    title: `${SIMPLE_NAME}`,
     meta: [
       { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
       { 'http-equiv': 'X-UA-Compatible', content: 'ie=edge' },
@@ -83,7 +83,7 @@ export default {
    */
   build: {},
   server: {
-    port: 80, // default: 3000
+    port: process.env.NODE_ENV === 'production' ? 80 : 6060, // default: 3000
     host: '0.0.0.0', // default: localhost,
   },
 }
