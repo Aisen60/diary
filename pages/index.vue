@@ -22,7 +22,7 @@ export default {
   name: 'HomePage',
   head() {
     return {
-      title: `${this.config.SIMPLE_NAME} | HomePage`,
+      title: `${this.config.SIMPLE_NAME}`,
     }
   },
 }
