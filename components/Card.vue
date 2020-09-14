@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card-wrapper">
     <nuxt-link :to="{ path: '/posts/' + card.number }" class="card-image">
       <img :src="splicingFileUrl(card.number + '.jpg')" alt="" />
     </nuxt-link>
@@ -18,7 +18,6 @@
 <script>
 export default {
   name: 'Card',
-
   props: {
     card: {
       type: Object,
@@ -27,5 +26,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped></style>

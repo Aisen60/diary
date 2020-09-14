@@ -1,8 +1,8 @@
 <template>
-  <div class="main-post-wrapper">
+  <div class="page-postDetails-wrapper">
+    <Header fixed />
     <div class="article">
       <div class="article-header">
-        <Github />
         <img :src="splicingFileUrl(issuesNumber + '.jpg')" alt="" />
 
         <div class="head-mask">
@@ -25,10 +25,10 @@
 
 <script>
 import marked from 'marked'
-import { WEB_TITLE } from '../../config'
 import Api from '../../services'
 
 export default {
+  layout: 'posts',
   name: 'PostDetails',
   async asyncData({ params }) {
     const issuesNumber = params.number
@@ -48,7 +48,7 @@ export default {
 
   head() {
     return {
-      title: `${this.postData.title} - ${WEB_TITLE}`,
+      title: `${this.config.SIMPLE_NAME} | ${this.postData.title}`,
       meta: [
         {
           hid: 'description',
