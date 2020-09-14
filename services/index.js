@@ -1,12 +1,12 @@
 import axios from 'axios'
 import {
   GIT_BASE_URL,
-  BASE_URL_CATALOG,
+  GIT_BASE_URL_CATALOG,
   GIT_USERNAME,
   GIT_REPOSITORY,
 } from '../config'
 const service = axios.create({
-  baseURL: `${GIT_BASE_URL}/${BASE_URL_CATALOG}/${GIT_USERNAME}/${GIT_REPOSITORY}`,
+  baseURL: `${GIT_BASE_URL}/${GIT_BASE_URL_CATALOG}/${GIT_USERNAME}/${GIT_REPOSITORY}`,
 })
 
 // 请求拦截器
