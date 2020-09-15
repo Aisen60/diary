@@ -1,10 +1,16 @@
 <template>
   <ul class="nav-link">
     <li v-for="item in nav" :key="item.name + '-' + item.path">
-      <nuxt-link v-if="!item.external" :to="{ path: item.path }">
+      <nuxt-link
+        v-if="!item.external"
+        :id="item.name + '-btn'"
+        :to="{ path: item.path }"
+      >
         {{ item.name }}
       </nuxt-link>
-      <a v-else :href="github" target="_blank">Github</a>
+      <a v-else :id="item.name + '-btn'" :href="github" target="_blank">
+        Github
+      </a>
     </li>
   </ul>
 </template>
