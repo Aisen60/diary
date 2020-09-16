@@ -10,7 +10,8 @@ export const FULL_NAME = 'Aisen Cai'
 
 export const SIMPLE_NAME = 'aisen60'
 
-export const AVATARS = 'https://avatars1.githubusercontent.com/u/19791710'
+export const AVATARS =
+  'https://portrait.gitee.com/uploads/avatars/user/642/1926555_aisen60_1600271619.png'
 
 export const BIO = '于我常在'
 
