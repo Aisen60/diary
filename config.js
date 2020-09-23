@@ -13,7 +13,7 @@ export const SIMPLE_NAME = 'aisen60'
 export const AVATARS =
   'https://portrait.gitee.com/uploads/avatars/user/642/1926555_aisen60_1600878457.png'
 
-export const BIO = '于我常在'
+export const BIO = 'Past Lives'
 
 export const GITHUB_AISEN60 = 'https://github.com/aisen60'
 
