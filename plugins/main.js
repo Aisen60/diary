@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Darkmode from 'darkmode-js'
 import config, { APP_TITLE, APP_VERSION } from '../config'
 import filters from './filters'
 import methods from './methods'
@@ -10,6 +11,21 @@ Object.keys(filters).forEach((key) => {
 })
 
 Vue.use(methods)
+
+const options = {
+  bottom: '64px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.5s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff', // default: '#fff'
+  buttonColorDark: '#100f2c', // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+}
+
+const darkmode = new Darkmode(options)
+darkmode.showWidget()
 
 // eslint-disable-next-line no-console
 console.log(

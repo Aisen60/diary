@@ -1,4 +1,4 @@
-export const GIT_BASE_URL = 'https://gitee.com'
+export const GIT_BASE_URL = 'http://gitee.com'
 
 export const GIT_BASE_URL_CATALOG = 'api/v5/repos'
 

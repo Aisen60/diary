@@ -83,7 +83,8 @@ export default {
    */
   build: {},
   server: {
-    port: process.env.NODE_ENV === 'production' ? 80 : 6060, // default: 3000
+    // port: process.env.NODE_ENV === 'production' ? 80 : 6060, // default: 3000
+    port: 80,
     host: '0.0.0.0', // default: localhost,
   },
 }
